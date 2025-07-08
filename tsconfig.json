@@ -1,17 +1,18 @@
 {
     "compilerOptions": {
-        "target":"es2020",
+        // "target":"es2020",
+        "target":"ESNext",
         "module": "commonjs",
         // ESNext
+        "lib": ["ESNext","DOM"],
         "strict":true,
         "esModuleInterop": true,
         "moduleResolution": "node",
-        "resolveJsonModule": true,
+        // "resolveJsonModule": true,
         "outDir": "dist",
-        "types":["node"]
+        "types":["node"],
+        // "rootDir": "tests"
     },
-    // "exclude": [
-    //     "node_modules"
-    // ]
+    "exclude": ["node_modules" ],
     "include": ["src/**/*.ts"]
 }

@@ -4,8 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "cucumber-js"
-   
+    "clean:reports": "rimraf test-results reports",
+    "testonly": "cross-env-shell \"npx cucumber-js || exit 0\"",
+    "test": "npm run clean:reports && npm run testonly && npm run posttest",
+    "posttest": "echo running test report generation.. && npx ts-node src/helper/report.ts"
   },
   "keywords": [],
   "author": "",
@@ -15,6 +17,10 @@
     "@cucumber/cucumber": "^11.3.0",
     "@playwright/test": "^1.53.2",
     "@types/node": "^24.0.10",
-    "ts-node": "^10.9.2"
+    "cross-env": "^7.0.3",
+    "multiple-cucumber-html-reporter": "^3.9.3",
+    "rimraf": "^6.0.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
   }
 }

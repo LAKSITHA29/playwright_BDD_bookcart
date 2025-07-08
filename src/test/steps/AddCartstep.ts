@@ -8,11 +8,14 @@ let page: Page;
 When('the user search for the product {string}', async function (pro_name) {
     const search = pageFixture.page.locator("//input[@type='search']");
     await search.fill(pro_name);
-    await search.press('Enter');
+    const res=await pageFixture.page.locator("//span[@class='mdc-list-item__primary-text']").click();
+    // await search.press('Enter');
 });
 
 When('the user add the book to the cart',{timeout: 30000}, async function () {
-    const cart = pageFixture.page.locator("//span[@class='mdc-button__label']").first();
+    const cart = pageFixture.page.locator("//span[contains(text(),' Add to Cart')]");
+        // "(//span[@class='mdc-button__label'])[5]")
+    // ("//span[@class='mdc-button__label']").first();
     await cart.click();
 });
 

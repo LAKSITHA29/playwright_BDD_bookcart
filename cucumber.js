@@ -6,14 +6,16 @@ module.exports = {
     dryRun: false,
     paths: ["src/test/features//*.feature"],
     require: [
-      "src/test/steps//*.ts",
-      "src/hooks//*.ts"
+      "src/test/steps/**/*.ts",
+      "src/hooks/**/*.ts"
     ],
     format: [
       "progress-bar",
       "html:reports/cucumber-report.html",
-      "json:test-results/cucumber-report.json"
+      "json:test-results/cucumber-report.json" //npm install multiple-cucumber-html-reporter,--save-dev
     ],
-    requireModule: ["ts-node/register"]
+    requireModule: ["ts-node/register"],
+
+    parallel:2
   }
 };
