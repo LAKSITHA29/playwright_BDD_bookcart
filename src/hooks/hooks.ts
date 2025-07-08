@@ -1,14 +1,18 @@
+import { invokeBrowser } from './../helper/browsers/browserManager';
 import { Before, After, BeforeAll, AfterAll, Status } from "@cucumber/cucumber";
 import { chromium,Browser,Page, BrowserContext } from "@playwright/test";
 import { pageFixture } from "./pagefixture";
+import { getEnv } from "../helper/env/env";
 
 let browser:Browser;
 let context:BrowserContext;
 
 BeforeAll(async function () {
   // This runs ONCE before all scenarios
-  console.log("Launching browser...");
-  browser = await chromium.launch({ headless: false });
+  getEnv();
+  browser=await invokeBrowser();
+  // console.log("Launching browser...");
+  // browser = await chromium.launch({ headless: false });
 });
 
 Before(async function() {

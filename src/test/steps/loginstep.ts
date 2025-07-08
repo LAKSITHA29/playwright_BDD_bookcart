@@ -1,12 +1,18 @@
+import { getEnv } from './../../helper/env/env';
 import { Given, When, Then } from '@cucumber/cucumber';
 import { chromium, Page, Browser, expect } from '@playwright/test';
 import { pageFixture } from '../../hooks/pagefixture';
+// import { getEnv } from '../../helper/env/env';
+
 
 let browser: Browser;
 let page: Page;
 
 Given('User navigates to the application', { timeout: 30000 }, async function () {
-    await pageFixture.page.goto("https://bookcart.azurewebsites.net/");
+    const baseUrl=process.env.BASEURL;
+    if(!baseUrl) throw new Error("BASEURL environment variable is not defined");
+    await pageFixture.page!.goto(baseUrl);
+    // await pageFixture.page.goto("https://bookcart.azurewebsites.net/");
     // browser = await chromium.launch({ headless: false });
     // page = await browser.newPage();
     // await page.goto("https://bookcart.azurewebsites.net/");
