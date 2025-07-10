@@ -12,14 +12,12 @@ import AddToCartPage from '../pages/addCartPage';
 let browser:Browser;
 let context:BrowserContext;
 
-
 BeforeAll(async function () {
   // This runs ONCE before all scenarios
   getEnv();
   browser=await invokeBrowser();
   // console.log("Launching browser...");
   // browser = await chromium.launch({ headless: false });
-  
 });
 
 Before(async function({pickle}) {

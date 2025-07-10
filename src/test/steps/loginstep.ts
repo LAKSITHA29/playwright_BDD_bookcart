@@ -66,6 +66,7 @@
 import { Given, When, Then, setDefaultTimeout } from '@cucumber/cucumber';
 import { expect } from '@playwright/test';
 import { pageFixture } from '../../hooks/pagefixture';
+import * as loginData from '../../helper/util/test-Data/LoginData.json';
 
 setDefaultTimeout(60 * 1000 * 2);
 
@@ -88,6 +89,17 @@ Given('User enters the name as {string}', async function (username: string) {
 
 Given('User enters the password as {string}', async function (password: string) {
     await pageFixture.loginPage!.enterPassword(password);
+});
+Given('User enters valid login credentials', async function () {
+    const { username, password } = loginData.valid;
+    await pageFixture.loginPage!.enterUserName(username);
+    await pageFixture.loginPage!.enterPassword(password);
+});
+
+ Given('User enters invalid login credentials', async function () {
+    const { username, password } = loginData.invalid;
+    await pageFixture.loginPage!.enterUserName(username);
+    await pageFixture.loginPage!.enterPassword(password);      
 });
 
 

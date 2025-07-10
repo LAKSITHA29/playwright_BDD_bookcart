@@ -15,7 +15,7 @@ export default class AddToCartPage {
   }
 
   async clickAddToCart() {
-    await this.base.waitAndClick("//span[contains(text(),' Add to Cart')]");
+    await this.base.waitAndClick("(//span[contains(text(),' Add to Cart')])[1]");
   }
 
   async openCart() {
